@@ -15,17 +15,28 @@ final class OtlpWire {
                  Map<String, Object> resource, byte[] traceId, byte[] spanId) {}
 
     static List<Event> decode(byte[] payload) throws IOException {
-        var result = new ArrayList<Event>();
-        for (var resourceLogs : messages(payload, 1)) {
-            var resource = new HashMap<String, Object>();
-            for (var r : messages(resourceLogs, 1))
-                for (var pair : messages(r, 1)) readAttribute(pair, resource);
-            for (var scope : messages(resourceLogs, 2)) {
-                for (var bytes : messages(scope, 2)) {
-                    var input = CodedInputStream.newInstance(bytes);
-                    String name = "", body = ""; long nanos = 0; int severity = 0;
+
+        List<Event> result = new ArrayList<Event>();
+
+        for (byte[] resourceLogs : messages(payload, 1)) {
+            Map<String, Object> resource = new HashMap<String, Object>();
+
+            for (byte[] r : messages(resourceLogs, 1)) {
+                for (byte[] pair : messages(r, 1)) {
+                    readAttribute(pair, resource);
+                }
+            }
+
+            for (byte[] scope : messages(resourceLogs, 2)) {
+                for (byte[] bytes : messages(scope, 2)) {
+                    CodedInputStream input = CodedInputStream.newInstance(bytes);
+                    String name = "";
+                    String body = "";
+                    long nanos = 0;
+                    int severity = 0;
                     byte[] trace = {}, span = {};
-                    var attrs = new HashMap<String, Object>();
+                    Map<String, Object> attrs = new HashMap<String, Object>();
+
                     for (int tag; (tag = input.readTag()) != 0;) {
                         switch (tag >>> 3) {
                             case 1 -> nanos = input.readFixed64();
@@ -38,37 +49,56 @@ final class OtlpWire {
                             default -> input.skipField(tag);
                         }
                     }
+
                     result.add(new Event(name, nanos, body, severity, attrs, resource, trace, span));
                 }
             }
         }
+
         return result;
     }
 
     private static List<byte[]> messages(byte[] bytes, int field) throws IOException {
-        var result = new ArrayList<byte[]>();
-        var input = CodedInputStream.newInstance(bytes);
+
+        List<byte[]> result = new ArrayList<byte[]>();
+        CodedInputStream input = CodedInputStream.newInstance(bytes);
+
         for (int tag; (tag = input.readTag()) != 0;) {
-            if (tag >>> 3 == field) result.add(input.readByteArray());
-            else input.skipField(tag);
+            if (tag >>> 3 == field) {
+                result.add(input.readByteArray());
+            } else {
+                input.skipField(tag);
+            }
         }
+
         return result;
     }
 
     private static void readAttribute(byte[] bytes, Map<String, Object> attributes) throws IOException {
-        var input = CodedInputStream.newInstance(bytes);
-        String key = null; Object value = null;
+
+        CodedInputStream input = CodedInputStream.newInstance(bytes);
+        String key = null;
+        Object value = null;
+
         for (int tag; (tag = input.readTag()) != 0;) {
-            if (tag >>> 3 == 1) key = input.readString();
-            else if (tag >>> 3 == 2) value = scalar(input.readByteArray());
-            else input.skipField(tag);
+            if (tag >>> 3 == 1) {
+                key = input.readString();
+            } else if (tag >>> 3 == 2) {
+                value = scalar(input.readByteArray());
+            } else {
+                input.skipField(tag);
+            }
         }
-        if (key == null || value == null || attributes.putIfAbsent(key, value) != null)
+
+        if (key == null || value == null || attributes.putIfAbsent(key, value) != null) {
             throw new IOException("Missing or duplicate OTLP attribute");
+        }
     }
 
     private static Object scalar(byte[] bytes) throws IOException {
-        var input = CodedInputStream.newInstance(bytes);
+
+        CodedInputStream input = CodedInputStream.newInstance(bytes);
+
         return switch (input.readTag() >>> 3) {
             case 1 -> input.readString();
             case 2 -> input.readBool();

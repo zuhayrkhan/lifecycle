@@ -73,10 +73,12 @@ import java.util.Map;
 
 // sdkLoggerProvider is configured and owned by the host application.
 Lifecycle lifecycle = new DefaultLifecycle(new OpenTelemetryLifecycleSink(sdkLoggerProvider));
+
 lifecycle.phase(LifecyclePhase.STARTING);
 lifecycle.milestone("configuration-loaded");
 lifecycle.condition("dependency.database", ConditionState.UP);
 lifecycle.milestone("initial-data-loaded", Map.of("position.count", 18342));
+
 lifecycle.phase(LifecyclePhase.RUNNING);
 lifecycle.condition("health", ConditionState.UP);
 ```
@@ -101,7 +103,8 @@ using OpenTelemetry.Exporter;
 using OpenTelemetry.Logs;
 using OpenTelemetry.Resources;
 
-var services = new ServiceCollection();
+ServiceCollection services = new ServiceCollection();
+
 services.AddLogging(logging => logging.AddOpenTelemetry(options =>
 {
     options.SetResourceBuilder(ResourceBuilder.CreateEmpty().AddService("my-service"));
@@ -113,18 +116,22 @@ services.AddLogging(logging => logging.AddOpenTelemetry(options =>
     });
 }));
 
-using var host = services.BuildServiceProvider();
+using ServiceProvider host = services.BuildServiceProvider();
 ILifecycle lifecycle = new DefaultLifecycle(
     new OpenTelemetryLifecycleSink(host.GetRequiredService<ILoggerFactory>()));
+
 lifecycle.Phase(LifecyclePhase.Starting);
 lifecycle.Milestone("configuration-loaded");
 lifecycle.Condition("dependency.database", ConditionState.Up);
+
 lifecycle.Phase(LifecyclePhase.Running);
 
 // At application shutdown, while host services/transport dependencies still exist:
+
 lifecycle.Phase(LifecyclePhase.Stopping);
 lifecycle.Phase(LifecyclePhase.Stopped);
-var flushed = host.GetRequiredService<LoggerProvider>().ForceFlush(10_000);
+
+bool flushed = host.GetRequiredService<LoggerProvider>().ForceFlush(10_000);
 // The host decides how to report an unsuccessful best-effort flush.
 ```
 

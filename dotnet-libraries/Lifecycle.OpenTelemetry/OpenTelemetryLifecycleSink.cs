@@ -12,16 +12,22 @@ public sealed class OpenTelemetryLifecycleSink : ILifecycleEventSink
 
     public OpenTelemetryLifecycleSink(ILoggerFactory factory)
     {
+
         ArgumentNullException.ThrowIfNull(factory);
+
         logger = factory.CreateLogger(CategoryName);
     }
 
     public void Emit(LifecycleEvent lifecycleEvent)
     {
+
         ArgumentNullException.ThrowIfNull(lifecycleEvent);
-        var values = lifecycleEvent.Attributes.Select(pair =>
+
+        List<KeyValuePair<string, object?>> values = lifecycleEvent.Attributes.Select(pair =>
             new KeyValuePair<string, object?>(pair.Key, pair.Value.Value)).ToList();
-        values.Add(new(TimestampKey, lifecycleEvent.Timestamp.UtcTicks));
+
+        values.Add(new KeyValuePair<string, object?>(TimestampKey, lifecycleEvent.Timestamp.UtcTicks));
+
         logger.Log(LogLevel.Information, new EventId(0, lifecycleEvent.Name), values, null,
             (_, _) => lifecycleEvent.Name);
     }

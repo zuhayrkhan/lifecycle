@@ -9,17 +9,23 @@ public final class CompositeLifecycleEventSink implements LifecycleEventSink {
     private final Consumer<RuntimeException> onError;
 
     public CompositeLifecycleEventSink(List<LifecycleEventSink> sinks, Consumer<RuntimeException> onError) {
+
         this.sinks = List.copyOf(sinks);
         this.onError = Objects.requireNonNull(onError, "onError");
     }
 
     public static CompositeLifecycleEventSink of(LifecycleEventSink... sinks) {
+
         return new CompositeLifecycleEventSink(List.of(sinks), failure -> {});
     }
 
     @Override
     public void emit(LifecycleEvent event) {
+
         Objects.requireNonNull(event, "event");
-        for (var sink : sinks) SinkFailures.emit(sink, event, onError);
+
+        for (LifecycleEventSink sink : sinks) {
+            SinkFailures.emit(sink, event, onError);
+        }
     }
 }

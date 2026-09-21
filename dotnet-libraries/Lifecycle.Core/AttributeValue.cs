@@ -7,6 +7,7 @@ public sealed record AttributeValue
 
     public AttributeValue(object? value)
     {
+
         Value = value switch
         {
             string or bool or long => value,

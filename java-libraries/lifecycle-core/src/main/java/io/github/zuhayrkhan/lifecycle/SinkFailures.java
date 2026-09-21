@@ -6,6 +6,7 @@ final class SinkFailures {
     private SinkFailures() {}
 
     static void emit(LifecycleEventSink sink, LifecycleEvent event, Consumer<RuntimeException> onError) {
+
         try {
             sink.emit(event);
         } catch (RuntimeException failure) {

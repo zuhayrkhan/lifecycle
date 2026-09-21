@@ -5,12 +5,15 @@ namespace Lifecycle.Core;
 /// <summary>Unbounded test/example storage, not a production retention mechanism.</summary>
 public sealed class InMemoryLifecycleEventSink : ILifecycleEventSink
 {
-    private readonly ConcurrentQueue<LifecycleEvent> events = new();
+    private readonly ConcurrentQueue<LifecycleEvent> events = new ConcurrentQueue<LifecycleEvent>();
+
     public IReadOnlyList<LifecycleEvent> Events => Array.AsReadOnly(events.ToArray());
 
     public void Emit(LifecycleEvent lifecycleEvent)
     {
+
         ArgumentNullException.ThrowIfNull(lifecycleEvent);
+
         events.Enqueue(lifecycleEvent);
     }
 }

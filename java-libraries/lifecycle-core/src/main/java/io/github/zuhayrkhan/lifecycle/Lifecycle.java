@@ -6,11 +6,17 @@ import java.util.Map;
 public interface Lifecycle {
     void phase(LifecyclePhase phase);
 
-    default void milestone(String name) { milestone(name, Map.of()); }
+    default void milestone(String name) {
+
+        milestone(name, Map.of());
+    }
 
     void milestone(String name, Map<String, ?> attributes);
 
-    default void condition(String name, ConditionState state) { condition(name, state, Map.of()); }
+    default void condition(String name, ConditionState state) {
+
+        condition(name, state, Map.of());
+    }
 
     void condition(String name, ConditionState state, Map<String, ?> attributes);
 }
