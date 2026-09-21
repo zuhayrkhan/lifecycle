@@ -1,0 +1,17 @@
+<Project>
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <Authors>Zuhayr Khan</Authors>
+    <RepositoryUrl>https://github.com/zuhayrkhan/lifecycle</RepositoryUrl>
+    <Description>Application lifecycle telemetry with a backend-independent core.</Description>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <!-- The root POM's first version element is the canonical product version, also for direct dotnet builds. -->
+    <Version>$([System.Text.RegularExpressions.Regex]::Match($([System.IO.File]::ReadAllText('$(MSBuildThisFileDirectory)../pom.xml')), '&lt;version&gt;([^&lt;]+)&lt;/version&gt;').Groups[1].Value)</Version>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)../README.md" Pack="true" PackagePath="/" />
+  </ItemGroup>
+</Project>

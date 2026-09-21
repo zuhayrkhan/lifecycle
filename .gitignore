@@ -1,0 +1,8 @@
+**/target/
+**/bin/
+**/obj/
+.idea/
+*.iml
+.DS_Store
+.vs/
+TestResults/

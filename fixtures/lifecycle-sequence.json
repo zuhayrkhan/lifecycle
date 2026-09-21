@@ -1,0 +1,288 @@
+[
+  {
+    "operation": "phase",
+    "name": "STARTING",
+    "state": null,
+    "elapsedMs": 0,
+    "attributes": {},
+    "expected": {
+      "eventName": "application.lifecycle.phase_changed",
+      "timestamp": "2026-09-21T12:00:00.000Z",
+      "body": "application.lifecycle.phase_changed",
+      "severity": 9,
+      "attributes": {
+        "lifecycle.elapsed_ms": 0,
+        "lifecycle.phase.current": "STARTING"
+      }
+    }
+  },
+  {
+    "operation": "milestone",
+    "name": "configuration-loaded",
+    "state": null,
+    "elapsedMs": 125,
+    "attributes": {},
+    "expected": {
+      "eventName": "application.lifecycle.milestone",
+      "timestamp": "2026-09-21T12:00:00.125Z",
+      "body": "application.lifecycle.milestone",
+      "severity": 9,
+      "attributes": {
+        "lifecycle.elapsed_ms": 125,
+        "lifecycle.milestone": "configuration-loaded"
+      }
+    }
+  },
+  {
+    "operation": "condition",
+    "name": "dependency.database",
+    "state": "UP",
+    "elapsedMs": 250,
+    "attributes": {},
+    "expected": {
+      "eventName": "application.lifecycle.condition_changed",
+      "timestamp": "2026-09-21T12:00:00.250Z",
+      "body": "application.lifecycle.condition_changed",
+      "severity": 9,
+      "attributes": {
+        "lifecycle.elapsed_ms": 250,
+        "lifecycle.condition.name": "dependency.database",
+        "lifecycle.condition.current": "UP"
+      }
+    }
+  },
+  {
+    "operation": "condition",
+    "name": "dependency.amps",
+    "state": "UP",
+    "elapsedMs": 375,
+    "attributes": {},
+    "expected": {
+      "eventName": "application.lifecycle.condition_changed",
+      "timestamp": "2026-09-21T12:00:00.375Z",
+      "body": "application.lifecycle.condition_changed",
+      "severity": 9,
+      "attributes": {
+        "lifecycle.elapsed_ms": 375,
+        "lifecycle.condition.name": "dependency.amps",
+        "lifecycle.condition.current": "UP"
+      }
+    }
+  },
+  {
+    "operation": "milestone",
+    "name": "initial-data-loaded",
+    "state": null,
+    "elapsedMs": 500,
+    "attributes": {
+      "position.count": 18342,
+      "large.count": 9007199254740993,
+      "load.ratio": 0.75,
+      "cache.enabled": true,
+      "source": "référence"
+    },
+    "expected": {
+      "eventName": "application.lifecycle.milestone",
+      "timestamp": "2026-09-21T12:00:00.500Z",
+      "body": "application.lifecycle.milestone",
+      "severity": 9,
+      "attributes": {
+        "position.count": 18342,
+        "large.count": 9007199254740993,
+        "load.ratio": 0.75,
+        "cache.enabled": true,
+        "source": "référence",
+        "lifecycle.elapsed_ms": 500,
+        "lifecycle.milestone": "initial-data-loaded"
+      }
+    }
+  },
+  {
+    "operation": "phase",
+    "name": "RUNNING",
+    "state": null,
+    "elapsedMs": 625,
+    "attributes": {},
+    "expected": {
+      "eventName": "application.lifecycle.phase_changed",
+      "timestamp": "2026-09-21T12:00:00.625Z",
+      "body": "application.lifecycle.phase_changed",
+      "severity": 9,
+      "attributes": {
+        "lifecycle.elapsed_ms": 625,
+        "lifecycle.phase.current": "RUNNING",
+        "lifecycle.phase.previous": "STARTING"
+      }
+    }
+  },
+  {
+    "operation": "condition",
+    "name": "health",
+    "state": "UP",
+    "elapsedMs": 750,
+    "attributes": {},
+    "expected": {
+      "eventName": "application.lifecycle.condition_changed",
+      "timestamp": "2026-09-21T12:00:00.750Z",
+      "body": "application.lifecycle.condition_changed",
+      "severity": 9,
+      "attributes": {
+        "lifecycle.elapsed_ms": 750,
+        "lifecycle.condition.name": "health",
+        "lifecycle.condition.current": "UP"
+      }
+    }
+  },
+  {
+    "operation": "condition",
+    "name": "dependency.amps",
+    "state": "DOWN",
+    "elapsedMs": 875,
+    "attributes": {
+      "reason": "connection lost"
+    },
+    "expected": {
+      "eventName": "application.lifecycle.condition_changed",
+      "timestamp": "2026-09-21T12:00:00.8751234Z",
+      "body": "application.lifecycle.condition_changed",
+      "severity": 9,
+      "attributes": {
+        "reason": "connection lost",
+        "lifecycle.elapsed_ms": 875,
+        "lifecycle.condition.name": "dependency.amps",
+        "lifecycle.condition.current": "DOWN",
+        "lifecycle.condition.previous": "UP"
+      }
+    }
+  },
+  {
+    "operation": "condition",
+    "name": "health",
+    "state": "DEGRADED",
+    "elapsedMs": 1000,
+    "attributes": {},
+    "expected": {
+      "eventName": "application.lifecycle.condition_changed",
+      "timestamp": "2026-09-21T12:00:01.000Z",
+      "body": "application.lifecycle.condition_changed",
+      "severity": 9,
+      "attributes": {
+        "lifecycle.elapsed_ms": 1000,
+        "lifecycle.condition.name": "health",
+        "lifecycle.condition.current": "DEGRADED",
+        "lifecycle.condition.previous": "UP"
+      }
+    }
+  },
+  {
+    "operation": "condition",
+    "name": "dependency.amps",
+    "state": "UP",
+    "elapsedMs": 1125,
+    "attributes": {},
+    "expected": {
+      "eventName": "application.lifecycle.condition_changed",
+      "timestamp": "2026-09-21T12:00:01.125Z",
+      "body": "application.lifecycle.condition_changed",
+      "severity": 9,
+      "attributes": {
+        "lifecycle.elapsed_ms": 1125,
+        "lifecycle.condition.name": "dependency.amps",
+        "lifecycle.condition.current": "UP",
+        "lifecycle.condition.previous": "DOWN"
+      }
+    }
+  },
+  {
+    "operation": "condition",
+    "name": "health",
+    "state": "UP",
+    "elapsedMs": 1250,
+    "attributes": {},
+    "expected": {
+      "eventName": "application.lifecycle.condition_changed",
+      "timestamp": "2026-09-21T12:00:01.250Z",
+      "body": "application.lifecycle.condition_changed",
+      "severity": 9,
+      "attributes": {
+        "lifecycle.elapsed_ms": 1250,
+        "lifecycle.condition.name": "health",
+        "lifecycle.condition.current": "UP",
+        "lifecycle.condition.previous": "DEGRADED"
+      }
+    }
+  },
+  {
+    "operation": "phase",
+    "name": "RUNNING",
+    "state": null,
+    "elapsedMs": 1375,
+    "attributes": {},
+    "expected": {
+      "eventName": "application.lifecycle.phase_changed",
+      "timestamp": "2026-09-21T12:00:01.375Z",
+      "body": "application.lifecycle.phase_changed",
+      "severity": 9,
+      "attributes": {
+        "lifecycle.elapsed_ms": 1375,
+        "lifecycle.phase.current": "RUNNING",
+        "lifecycle.phase.previous": "RUNNING"
+      }
+    }
+  },
+  {
+    "operation": "condition",
+    "name": "health",
+    "state": "UP",
+    "elapsedMs": 1500,
+    "attributes": {},
+    "expected": {
+      "eventName": "application.lifecycle.condition_changed",
+      "timestamp": "2026-09-21T12:00:01.500Z",
+      "body": "application.lifecycle.condition_changed",
+      "severity": 9,
+      "attributes": {
+        "lifecycle.elapsed_ms": 1500,
+        "lifecycle.condition.name": "health",
+        "lifecycle.condition.current": "UP",
+        "lifecycle.condition.previous": "UP"
+      }
+    }
+  },
+  {
+    "operation": "phase",
+    "name": "STOPPING",
+    "state": null,
+    "elapsedMs": 1625,
+    "attributes": {},
+    "expected": {
+      "eventName": "application.lifecycle.phase_changed",
+      "timestamp": "2026-09-21T12:00:01.625Z",
+      "body": "application.lifecycle.phase_changed",
+      "severity": 9,
+      "attributes": {
+        "lifecycle.elapsed_ms": 1625,
+        "lifecycle.phase.current": "STOPPING",
+        "lifecycle.phase.previous": "RUNNING"
+      }
+    }
+  },
+  {
+    "operation": "phase",
+    "name": "STOPPED",
+    "state": null,
+    "elapsedMs": 1750,
+    "attributes": {},
+    "expected": {
+      "eventName": "application.lifecycle.phase_changed",
+      "timestamp": "2026-09-21T12:00:01.750Z",
+      "body": "application.lifecycle.phase_changed",
+      "severity": 9,
+      "attributes": {
+        "lifecycle.elapsed_ms": 1750,
+        "lifecycle.phase.current": "STOPPED",
+        "lifecycle.phase.previous": "STOPPING"
+      }
+    }
+  }
+]

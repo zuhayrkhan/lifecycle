@@ -1,0 +1,6 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="../Lifecycle.Core/Lifecycle.Core.csproj" />
+    <PackageReference Include="OpenTelemetry" Version="1.19.1" />
+  </ItemGroup>
+</Project>
