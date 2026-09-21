@@ -1,0 +1,49 @@
+@startuml
+title Java — lifecycle event emission
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam defaultFontName SansSerif
+skinparam ArrowColor #425466
+skinparam sequenceMessageAlign center
+hide footbox
+autonumber
+
+actor Application as app
+participant DefaultLifecycle as core #EDF5FF
+participant "Atomic phase /\ncondition map" as state #EDF5FF
+participant OpenTelemetryLifecycleSink as sink #EAF7EE
+participant "OTel Logger / SDK" as sdk #FFF1D6
+participant "SDK processors /\nexporter" as exporter #FFF1D6
+
+app -> core : phase(...), milestone(...) or condition(...)
+core -> core : Validate inputs; copy and normalize caller attributes
+break Invalid input
+  core --> app : Throw argument exception; no state change or event
+end
+opt Phase or condition (milestones are stateless)
+  core -> state : Atomic update, including duplicate values
+  state --> core : Previous value, or absent
+end
+core -> core : Read monotonic elapsed and wall clock\nCreate immutable LifecycleEvent
+core -> sink : emit(event)
+sink -> sdk : logRecordBuilder()\nsetEventName / setTimestamp / setBody\nsetSeverity(INFO) / typed attributes / emit()
+sdk -> exporter : Pass record through configured processors
+note over sdk, exporter
+  Host Resource supplies identity; current trace context is inherited.
+  A batch processor may defer export; a simple processor may export here.
+end note
+exporter --> sdk
+sdk --> sink
+sink --> core
+core --> app : Return
+
+note over core, sink
+  If emit throws an ordinary exception, the core contains it and
+  invokes its optional diagnostic callback. Observed state is retained.
+  Composite sinks independently contain failures and attempt each child.
+end note
+note over app, exporter
+  Calls are synchronous; concurrent deliveries may arrive out of order.
+  Returning from the call is not a delivery acknowledgement.
+end note
+@enduml

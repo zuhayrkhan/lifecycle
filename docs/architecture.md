@@ -1,5 +1,16 @@
 # Architecture and cross-language parity
 
+## Diagrams
+
+![Lifecycle components and ownership](diagrams/components.svg)
+
+Editable PlantUML and rendered diagrams:
+
+- [Components and ownership](diagrams/README.md#components-and-ownership)
+- [Java event emission](diagrams/README.md#java-event-emission)
+- [.NET event emission and timestamp restoration](diagrams/README.md#net-event-emission)
+- [Shutdown and flushing](diagrams/README.md#shutdown-and-flushing)
+
 ## Scope and dependencies
 
 The public Lifecycle API emits a small immutable domain event through a synchronous sink.

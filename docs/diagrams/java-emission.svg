@@ -1,0 +1,341 @@
+<svg xmlns="http://www.w3.org/2000/svg" contentStyleType="text/css"
+     data-diagram-type="SEQUENCE" height="822px" preserveAspectRatio="none"
+     style="width:1679px;height:822px;background:#FFFFFF;" version="1.1" viewBox="0 0 1679 822" width="1679px"
+     zoomAndPan="magnify"><?plantuml 1.2026.6?>
+    <defs/>
+    <g>
+        <g class="title" data-source-line="1">
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="700" lengthAdjust="spacing"
+                  textLength="226.4473" x="722.8528" y="28.5352">Java &#8212; lifecycle event emission
+            </text>
+        </g>
+        <rect fill="none" height="46.6211" style="stroke:#000000;stroke-width:1.5;" width="493.6172" x="10"
+              y="207.5977"/>
+        <rect fill="none" height="75.9316" style="stroke:#000000;stroke-width:1.5;" width="496.0444" x="362.5186"
+              y="268.2188"/>
+        <g class="participant-lifeline" data-entity-uid="part1" data-qualified-name="app" data-source-line="10"
+           id="part1-lifeline">
+            <g>
+                <title>Application</title>
+                <rect fill="#000000" fill-opacity="0.00000" height="702.7637" width="8" x="57.4248" y="118.9766"/>
+                <line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5,5;" x1="61" x2="61" y1="118.9766"
+                      y2="821.7402"/>
+            </g>
+        </g>
+        <g class="participant-lifeline" data-entity-uid="part2" data-qualified-name="core" data-source-line="11"
+           id="part2-lifeline">
+            <g>
+                <title>DefaultLifecycle</title>
+                <rect fill="#000000" fill-opacity="0.00000" height="702.7637" width="8" x="429.0679" y="118.9766"/>
+                <line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5,5;" x1="432.5186" x2="432.5186"
+                      y1="118.9766" y2="821.7402"/>
+            </g>
+        </g>
+        <g class="participant-lifeline" data-entity-uid="part3" data-qualified-name="state" data-source-line="12"
+           id="part3-lifeline">
+            <g>
+                <title>Atomic phase .</title>
+                <rect fill="#000000" fill-opacity="0.00000" height="702.7637" width="8" x="785.4868" y="118.9766"/>
+                <line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5,5;" x1="789.4106" x2="789.4106"
+                      y1="118.9766" y2="821.7402"/>
+            </g>
+        </g>
+        <g class="participant-lifeline" data-entity-uid="part4" data-qualified-name="sink" data-source-line="13"
+           id="part4-lifeline">
+            <g>
+                <title>OpenTelemetryLifecycleSink</title>
+                <rect fill="#000000" fill-opacity="0.00000" height="702.7637" width="8" x="956.6851" y="118.9766"/>
+                <line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5,5;" x1="960.563" x2="960.563"
+                      y1="118.9766" y2="821.7402"/>
+            </g>
+        </g>
+        <g class="participant-lifeline" data-entity-uid="part5" data-qualified-name="sdk" data-source-line="14"
+           id="part5-lifeline">
+            <g>
+                <title>OTel Logger . SDK</title>
+                <rect fill="#000000" fill-opacity="0.00000" height="702.7637" width="8" x="1266.6924" y="118.9766"/>
+                <line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5,5;" x1="1270.4805" x2="1270.4805"
+                      y1="118.9766" y2="821.7402"/>
+            </g>
+        </g>
+        <g class="participant-lifeline" data-entity-uid="part6" data-qualified-name="exporter" data-source-line="15"
+           id="part6-lifeline">
+            <g>
+                <title>SDK processors .</title>
+                <rect fill="#000000" fill-opacity="0.00000" height="702.7637" width="8" x="1575.2651" y="118.9766"/>
+                <line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5,5;" x1="1578.6572" x2="1578.6572"
+                      y1="118.9766" y2="821.7402"/>
+            </g>
+        </g>
+        <g class="participant participant-head" data-entity-uid="part1" data-qualified-name="app" data-source-line="10"
+           id="part1-head">
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="76.8496"
+                  x="20" y="116.0234">Application
+            </text>
+            <ellipse cx="61.4248" cy="50.9883" fill="#E2E2F0" rx="8" ry="8" style="stroke:#181818;stroke-width:0.5;"/>
+            <path d="M61.4248,58.9883 L61.4248,85.9883 M48.4248,66.9883 L74.4248,66.9883 M61.4248,85.9883 L48.4248,100.9883 M61.4248,85.9883 L74.4248,100.9883"
+                  fill="none" style="stroke:#181818;stroke-width:0.5;"/>
+        </g>
+        <g class="participant participant-head" data-entity-uid="part2" data-qualified-name="core" data-source-line="11"
+           id="part2-head">
+            <rect fill="#EDF5FF" height="30.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;"
+                  width="121.0986" x="372.5186" y="87.4883"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="107.0986"
+                  x="379.5186" y="108.0234">DefaultLifecycle
+            </text>
+        </g>
+        <g class="participant participant-head" data-entity-uid="part3" data-qualified-name="state"
+           data-source-line="12" id="part3-head">
+            <rect fill="#EDF5FF" height="46.9766" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;"
+                  width="118.1523" x="730.4106" y="71"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="104.1523"
+                  x="737.4106" y="91.5352">Atomic phase /
+            </text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="97.9316"
+                  x="740.521" y="108.0234">condition map
+            </text>
+        </g>
+        <g class="participant participant-head" data-entity-uid="part4" data-qualified-name="sink" data-source-line="13"
+           id="part4-head">
+            <rect fill="#EAF7EE" height="30.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;"
+                  width="204.2441" x="858.563" y="87.4883"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="190.2441"
+                  x="865.563" y="108.0234">OpenTelemetryLifecycleSink
+            </text>
+        </g>
+        <g class="participant participant-head" data-entity-uid="part5" data-qualified-name="sdk" data-source-line="14"
+           id="part5-head">
+            <rect fill="#FFF1D6" height="30.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;"
+                  width="140.4238" x="1200.4805" y="87.4883"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="126.4238"
+                  x="1207.4805" y="108.0234">OTel Logger / SDK
+            </text>
+        </g>
+        <g class="participant participant-head" data-entity-uid="part6" data-qualified-name="exporter"
+           data-source-line="15" id="part6-head">
+            <rect fill="#FFF1D6" height="46.9766" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;"
+                  width="131.2158" x="1513.6572" y="71"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="117.2158"
+                  x="1520.6572" y="91.5352">SDK processors /
+            </text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="58.29"
+                  x="1550.1201" y="108.0234">exporter
+            </text>
+        </g>
+        <g class="message" data-entity-1="part1" data-entity-2="part2" data-source-line="17" id="msg1">
+            <polygon fill="#425466" points="421.0679,146.2871,431.0679,150.2871,421.0679,154.2871,425.0679,150.2871"
+                     style="stroke:#425466;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/>
+            <line style="stroke:#425466;stroke-width:1;" x1="61.4248" x2="427.0679" y1="150.2871" y2="150.2871"/>
+            <text fill="#000000" font-family="sans-serif" font-size="13" font-weight="700" lengthAdjust="spacing"
+                  textLength="8.5757" x="115.7351" y="145.5449">1
+            </text>
+            <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="250.4468"
+                  x="128.3108" y="145.5449">phase(...), milestone(...) or condition(...)
+            </text>
+        </g>
+        <g class="message" data-entity-1="part2" data-entity-2="part2" data-source-line="18" id="msg2">
+            <line style="stroke:#425466;stroke-width:1;" x1="433.0679" x2="475.0679" y1="179.5977" y2="179.5977"/>
+            <line style="stroke:#425466;stroke-width:1;" x1="475.0679" x2="475.0679" y1="179.5977" y2="192.5977"/>
+            <line style="stroke:#425466;stroke-width:1;" x1="434.0679" x2="475.0679" y1="192.5977" y2="192.5977"/>
+            <polygon fill="#425466" points="444.0679,188.5977,434.0679,192.5977,444.0679,196.5977,440.0679,192.5977"
+                     style="stroke:#425466;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="13" font-weight="700" lengthAdjust="spacing"
+                  textLength="8.5757" x="440.0679" y="174.8555">2
+            </text>
+            <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="329.8433"
+                  x="452.6436" y="174.8555">Validate inputs; copy and normalize caller attributes
+            </text>
+        </g>
+        <path d="M10,207.5977 L93.0098,207.5977 L93.0098,214.9082 L83.0098,224.9082 L10,224.9082 L10,207.5977"
+              fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"/>
+        <rect fill="none" height="46.6211" style="stroke:#000000;stroke-width:1.5;" width="493.6172" x="10"
+              y="207.5977"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" font-weight="700" lengthAdjust="spacing"
+              textLength="38.0098" x="25" y="221.166">break
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="11" font-weight="700" lengthAdjust="spacing"
+              textLength="79.8574" x="108.0098" y="220.2324">[Invalid input]
+        </text>
+        <g class="message" data-entity-1="part2" data-entity-2="part1" data-source-line="20" id="msg3">
+            <polygon fill="#425466" points="72.4248,242.2188,62.4248,246.2188,72.4248,250.2188,68.4248,246.2188"
+                     style="stroke:#425466;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/>
+            <line style="stroke:#425466;stroke-width:1;stroke-dasharray:2,2;" x1="66.4248" x2="432.0679" y1="246.2188"
+                  y2="246.2188"/>
+            <text fill="#000000" font-family="sans-serif" font-size="13" font-weight="700" lengthAdjust="spacing"
+                  textLength="8.5757" x="73.4248" y="241.4766">3
+            </text>
+            <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="335.0674"
+                  x="86.0005" y="241.4766">Throw argument exception; no state change or event
+            </text>
+        </g>
+        <path d="M362.5186,268.2188 L429.7036,268.2188 L429.7036,275.5293 L419.7036,285.5293 L362.5186,285.5293 L362.5186,268.2188"
+              fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"/>
+        <rect fill="none" height="75.9316" style="stroke:#000000;stroke-width:1.5;" width="496.0444" x="362.5186"
+              y="268.2188"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" font-weight="700" lengthAdjust="spacing"
+              textLength="22.1851" x="377.5186" y="281.7871">opt
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="11" font-weight="700" lengthAdjust="spacing"
+              textLength="263.0977" x="444.7036" y="280.8535">[Phase or condition (milestones are stateless)]
+        </text>
+        <g class="message" data-entity-1="part2" data-entity-2="part3" data-source-line="23" id="msg4">
+            <polygon fill="#425466" points="777.4868,302.8398,787.4868,306.8398,777.4868,310.8398,781.4868,306.8398"
+                     style="stroke:#425466;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/>
+            <line style="stroke:#425466;stroke-width:1;" x1="433.0679" x2="783.4868" y1="306.8398" y2="306.8398"/>
+            <text fill="#000000" font-family="sans-serif" font-size="13" font-weight="700" lengthAdjust="spacing"
+                  textLength="8.5757" x="472.7043" y="302.0977">4
+            </text>
+            <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="264.5703"
+                  x="485.28" y="302.0977">Atomic update, including duplicate values
+            </text>
+        </g>
+        <g class="message" data-entity-1="part3" data-entity-2="part2" data-source-line="24" id="msg5">
+            <polygon fill="#425466" points="444.0679,332.1504,434.0679,336.1504,444.0679,340.1504,440.0679,336.1504"
+                     style="stroke:#425466;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/>
+            <line style="stroke:#425466;stroke-width:1;stroke-dasharray:2,2;" x1="438.0679" x2="788.4868" y1="336.1504"
+                  y2="336.1504"/>
+            <text fill="#000000" font-family="sans-serif" font-size="13" font-weight="700" lengthAdjust="spacing"
+                  textLength="8.5757" x="526.085" y="331.4082">5
+            </text>
+            <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="157.8091"
+                  x="538.6606" y="331.4082">Previous value, or absent
+            </text>
+        </g>
+        <g class="message" data-entity-1="part2" data-entity-2="part2" data-source-line="26" id="msg6">
+            <line style="stroke:#425466;stroke-width:1;" x1="433.0679" x2="475.0679" y1="387.7715" y2="387.7715"/>
+            <line style="stroke:#425466;stroke-width:1;" x1="475.0679" x2="475.0679" y1="387.7715" y2="400.7715"/>
+            <line style="stroke:#425466;stroke-width:1;" x1="434.0679" x2="475.0679" y1="400.7715" y2="400.7715"/>
+            <polygon fill="#425466" points="444.0679,396.7715,434.0679,400.7715,444.0679,404.7715,440.0679,400.7715"
+                     style="stroke:#425466;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="13" font-weight="700" lengthAdjust="spacing"
+                  textLength="8.5757" x="440.0679" y="375.374">6
+            </text>
+            <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="248.1108"
+                  x="452.6436" y="367.7188">Read monotonic elapsed and wall clock
+            </text>
+            <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="204.1597"
+                  x="474.6191" y="383.0293">Create immutable LifecycleEvent
+            </text>
+        </g>
+        <g class="message" data-entity-1="part2" data-entity-2="part4" data-source-line="27" id="msg7">
+            <polygon fill="#425466" points="948.6851,426.082,958.6851,430.082,948.6851,434.082,952.6851,430.082"
+                     style="stroke:#425466;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/>
+            <line style="stroke:#425466;stroke-width:1;" x1="433.0679" x2="954.6851" y1="430.082" y2="430.082"/>
+            <text fill="#000000" font-family="sans-serif" font-size="13" font-weight="700" lengthAdjust="spacing"
+                  textLength="8.5757" x="655.2893" y="425.3398">7
+            </text>
+            <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="70.5986"
+                  x="667.865" y="425.3398">emit(event)
+            </text>
+        </g>
+        <g class="message" data-entity-1="part4" data-entity-2="part5" data-source-line="28" id="msg8">
+            <polygon fill="#425466" points="1258.6924,486.0137,1268.6924,490.0137,1258.6924,494.0137,1262.6924,490.0137"
+                     style="stroke:#425466;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/>
+            <line style="stroke:#425466;stroke-width:1;" x1="960.6851" x2="1264.6924" y1="490.0137" y2="490.0137"/>
+            <text fill="#000000" font-family="sans-serif" font-size="13" font-weight="700" lengthAdjust="spacing"
+                  textLength="8.5757" x="972.6851" y="469.9609">8
+            </text>
+            <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="115.7178"
+                  x="1064.1177" y="454.6504">logRecordBuilder()
+            </text>
+            <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="257.1753"
+                  x="993.3889" y="469.9609">setEventName / setTimestamp / setBody
+            </text>
+            <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="273.4316"
+                  x="985.2607" y="485.2715">setSeverity(INFO) / typed attributes / emit()
+            </text>
+        </g>
+        <g class="message" data-entity-1="part5" data-entity-2="part6" data-source-line="29" id="msg9">
+            <polygon fill="#425466" points="1567.2651,515.3242,1577.2651,519.3242,1567.2651,523.3242,1571.2651,519.3242"
+                     style="stroke:#425466;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/>
+            <line style="stroke:#425466;stroke-width:1;" x1="1270.6924" x2="1573.2651" y1="519.3242" y2="519.3242"/>
+            <text fill="#000000" font-family="sans-serif" font-size="13" font-weight="700" lengthAdjust="spacing"
+                  textLength="8.5757" x="1282.6924" y="514.582">9
+            </text>
+            <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="271.9971"
+                  x="1295.2681" y="514.582">Pass record through configured processors
+            </text>
+        </g>
+        <path d="M1181,532.3242 L1181,572.3242 L1668,572.3242 L1668,542.3242 L1658,532.3242 L1181,532.3242"
+              fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/>
+        <path d="M1658,532.3242 L1658,542.3242 L1668,542.3242 L1658,532.3242" fill="#FEFFDD"
+              style="stroke:#181818;stroke-width:0.5;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="418.8311"
+              x="1187" y="549.8926">Host Resource supplies identity; current trace context is inherited.
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="466.1528"
+              x="1187" y="565.2031">A batch processor may defer export; a simple processor may export here.
+        </text>
+        <g class="message" data-entity-1="part6" data-entity-2="part5" data-source-line="34" id="msg10">
+            <polygon fill="#425466" points="1281.6924,595.2559,1271.6924,599.2559,1281.6924,603.2559,1277.6924,599.2559"
+                     style="stroke:#425466;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/>
+            <line style="stroke:#425466;stroke-width:1;stroke-dasharray:2,2;" x1="1275.6924" x2="1578.2651"
+                  y1="599.2559" y2="599.2559"/>
+            <text fill="#000000" font-family="sans-serif" font-size="13" font-weight="700" lengthAdjust="spacing"
+                  textLength="17.1514" x="1412.3464" y="594.5137">10
+            </text>
+            <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4.1133"
+                  x="1433.4978" y="594.5137">&#160;
+            </text>
+        </g>
+        <g class="message" data-entity-1="part5" data-entity-2="part4" data-source-line="35" id="msg11">
+            <polygon fill="#425466" points="971.6851,624.5664,961.6851,628.5664,971.6851,632.5664,967.6851,628.5664"
+                     style="stroke:#425466;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/>
+            <line style="stroke:#425466;stroke-width:1;stroke-dasharray:2,2;" x1="965.6851" x2="1269.6924" y1="628.5664"
+                  y2="628.5664"/>
+            <text fill="#000000" font-family="sans-serif" font-size="13" font-weight="700" lengthAdjust="spacing"
+                  textLength="17.1514" x="1103.0564" y="623.8242">11
+            </text>
+            <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4.1133"
+                  x="1124.2078" y="623.8242">&#160;
+            </text>
+        </g>
+        <g class="message" data-entity-1="part4" data-entity-2="part2" data-source-line="36" id="msg12">
+            <polygon fill="#425466" points="444.0679,653.877,434.0679,657.877,444.0679,661.877,440.0679,657.877"
+                     style="stroke:#425466;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/>
+            <line style="stroke:#425466;stroke-width:1;stroke-dasharray:2,2;" x1="438.0679" x2="959.6851" y1="657.877"
+                  y2="657.877"/>
+            <text fill="#000000" font-family="sans-serif" font-size="13" font-weight="700" lengthAdjust="spacing"
+                  textLength="17.1514" x="684.2441" y="653.1348">12
+            </text>
+            <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4.1133"
+                  x="705.3955" y="653.1348">&#160;
+            </text>
+        </g>
+        <g class="message" data-entity-1="part2" data-entity-2="part1" data-source-line="37" id="msg13">
+            <polygon fill="#425466" points="72.4248,683.1875,62.4248,687.1875,72.4248,691.1875,68.4248,687.1875"
+                     style="stroke:#425466;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/>
+            <line style="stroke:#425466;stroke-width:1;stroke-dasharray:2,2;" x1="66.4248" x2="432.0679" y1="687.1875"
+                  y2="687.1875"/>
+            <text fill="#000000" font-family="sans-serif" font-size="13" font-weight="700" lengthAdjust="spacing"
+                  textLength="17.1514" x="215.7805" y="682.4453">13
+            </text>
+            <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="41.7803"
+                  x="236.9319" y="682.4453">Return
+            </text>
+        </g>
+        <path d="M354,700.1875 L354,755.1875 L1039,755.1875 L1039,710.1875 L1029,700.1875 L354,700.1875" fill="#FEFFDD"
+              style="stroke:#181818;stroke-width:0.5;"/>
+        <path d="M1029,700.1875 L1029,710.1875 L1039,710.1875 L1029,700.1875" fill="#FEFFDD"
+              style="stroke:#181818;stroke-width:0.5;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="387.1055"
+              x="465.7646" y="717.7559">If emit throws an ordinary exception, the core contains it and
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="424.9565"
+              x="465.7646" y="733.0664">invokes its optional diagnostic callback. Observed state is retained.
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="452.7593"
+              x="465.7646" y="748.377">Composite sinks independently contain failures and attempt each child.
+        </text>
+        <path d="M10,766.1191 L10,806.1191 L1629,806.1191 L1629,776.1191 L1619,766.1191 L10,766.1191" fill="#FEFFDD"
+              style="stroke:#181818;stroke-width:0.5;"/>
+        <path d="M1619,766.1191 L1619,776.1191 L1629,776.1191 L1619,766.1191" fill="#FEFFDD"
+              style="stroke:#181818;stroke-width:0.5;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="433.0625"
+              x="598.9053" y="783.6875">Calls are synchronous; concurrent deliveries may arrive out of order.
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="372.3281"
+              x="598.9053" y="798.998">Returning from the call is not a delivery acknowledgement.
+        </text>
+    </g>
+</svg>

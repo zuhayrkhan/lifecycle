@@ -1,0 +1,344 @@
+<svg xmlns="http://www.w3.org/2000/svg" contentStyleType="text/css"
+     data-diagram-type="DESCRIPTION" height="778px" preserveAspectRatio="none"
+     style="width:1940px;height:778px;background:#FFFFFF;" version="1.1" viewBox="0 0 1940 778" width="1940px"
+     zoomAndPan="magnify"><?plantuml 1.2026.6?>
+    <defs/>
+    <g>
+        <g class="title" data-source-line="1">
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="700" lengthAdjust="spacing"
+                  textLength="358.9961" x="787.227" y="23.5352">Lifecycle telemetry &#8212; components and ownership
+            </text>
+        </g><!--cluster Core library ? no OTel dependencies-->
+        <g class="cluster" data-qualified-name="Core library . no OTel dependencies" data-source-line="14" id="ent0003">
+            <rect fill="#EDF5FF" height="246.22" rx="4" ry="4" style="stroke:#181818;stroke-width:1;" width="542"
+                  x="278.06" y="182.4783"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="700" lengthAdjust="spacing"
+                  textLength="269.083" x="414.5185" y="198.0134">Core library &#8212; no OTel dependencies
+            </text>
+        </g><!--cluster Language-specific adapters-->
+        <g class="cluster" data-qualified-name="Language-specific adapters" data-source-line="25" id="ent0012">
+            <rect fill="#EAF7EE" height="103.98" rx="4" ry="4" style="stroke:#181818;stroke-width:1;" width="738"
+                  x="844.06" y="182.4783"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="700" lengthAdjust="spacing"
+                  textLength="201.5986" x="1112.2607" y="198.0134">Language-specific adapters
+            </text>
+        </g><!--cluster Host-owned OpenTelemetry pipeline-->
+        <g class="cluster" data-qualified-name="Host-owned OpenTelemetry pipeline" data-source-line="31" id="ent0016">
+            <rect fill="#FFF1D6" height="211.18" rx="4" ry="4" style="stroke:#181818;stroke-width:1;" width="405"
+                  x="1378.06" y="350.4583"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="700" lengthAdjust="spacing"
+                  textLength="267.9277" x="1446.5961" y="365.9934">Host-owned OpenTelemetry pipeline
+            </text>
+        </g><!--entity core-->
+        <g class="entity" data-qualified-name="Core library . no OTel dependencies.core" data-source-line="15"
+           id="ent0004">
+            <rect fill="#F1F1F1" height="52.9766" rx="4" ry="4" style="stroke:#181818;stroke-width:0.5;"
+                  width="156.1582" x="293.98" y="217.4783"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="136.1582"
+                  x="303.98" y="241.0134">Lifecycle / ILifecycle
+            </text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="107.0986"
+                  x="303.98" y="257.5017">DefaultLifecycle
+            </text>
+        </g><!--entity port-->
+        <g class="entity" data-qualified-name="Core library . no OTel dependencies.port" data-source-line="16"
+           id="ent0005">
+            <ellipse cx="718.06" cy="403.6983" fill="#F1F1F1" rx="8" ry="8" style="stroke:#181818;stroke-width:0.5;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="134.75"
+                  x="650.685" y="434.2334">LifecycleEventSink /
+            </text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="127.0117"
+                  x="650.685" y="450.7217">ILifecycleEventSink
+            </text>
+        </g><!--entity composite-->
+        <g class="entity" data-qualified-name="Core library . no OTel dependencies.composite" data-source-line="17"
+           id="ent0006">
+            <rect fill="#F1F1F1" height="52.9766" rx="4" ry="4" style="stroke:#181818;stroke-width:0.5;"
+                  width="132.3828" x="484.86" y="217.4783"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="105.4717"
+                  x="494.86" y="241.0134">Composite sink
+            </text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="112.3828"
+                  x="494.86" y="257.5017">optional fan-out
+            </text>
+        </g><!--entity memory-->
+        <g class="entity" data-qualified-name="Core library . no OTel dependencies.memory" data-source-line="18"
+           id="ent0007">
+            <rect fill="#F1F1F1" height="52.9766" rx="4" ry="4" style="stroke:#181818;stroke-width:0.5;"
+                  width="151.6191" x="652.25" y="217.4783"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="108.8896"
+                  x="662.25" y="241.0134">In-memory sink
+            </text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="131.6191"
+                  x="662.25" y="257.5017">tests and examples
+            </text>
+        </g><!--entity javaAdapter-->
+        <g class="entity" data-qualified-name="Language-specific adapters.javaAdapter" data-source-line="26"
+           id="ent0013">
+            <rect fill="#F1F1F1" height="52.9766" rx="4" ry="4" style="stroke:#181818;stroke-width:0.5;"
+                  width="210.2441" x="1104.93" y="217.4783"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="27.0635"
+                  x="1114.93" y="241.0134">Java
+            </text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="190.2441"
+                  x="1114.93" y="257.5017">OpenTelemetryLifecycleSink
+            </text>
+        </g><!--entity netAdapter-->
+        <g class="entity" data-qualified-name="Language-specific adapters.netAdapter" data-source-line="27"
+           id="ent0014">
+            <rect fill="#F1F1F1" height="52.9766" rx="4" ry="4" style="stroke:#181818;stroke-width:0.5;"
+                  width="210.2441" x="859.93" y="217.4783"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="31.2129"
+                  x="869.93" y="241.0134">.NET
+            </text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="190.2441"
+                  x="869.93" y="257.5017">OpenTelemetryLifecycleSink
+            </text>
+        </g><!--entity timestamp-->
+        <g class="entity" data-qualified-name="Language-specific adapters.timestamp" data-source-line="28" id="ent0015">
+            <rect fill="#F1F1F1" height="52.9766" rx="4" ry="4" style="stroke:#181818;stroke-width:0.5;"
+                  width="215.3574" x="1350.38" y="217.4783"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="31.2129"
+                  x="1360.38" y="241.0134">.NET
+            </text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="195.3574"
+                  x="1360.38" y="257.5017">LifecycleLogRecordProcessor
+            </text>
+        </g><!--entity javaSdk-->
+        <g class="entity" data-qualified-name="Host-owned OpenTelemetry pipeline.javaSdk" data-source-line="32"
+           id="ent0017">
+            <rect fill="#F1F1F1" height="36.4883" rx="4" ry="4" style="stroke:#181818;stroke-width:0.5;"
+                  width="152.6514" x="1614.73" y="385.4583"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="132.6514"
+                  x="1624.73" y="408.9934">Java Logs API / SDK
+            </text>
+        </g><!--entity netSdk-->
+        <g class="entity" data-qualified-name="Host-owned OpenTelemetry pipeline.netSdk" data-source-line="33"
+           id="ent0018">
+            <rect fill="#F1F1F1" height="36.4883" rx="4" ry="4" style="stroke:#181818;stroke-width:0.5;"
+                  width="186.0996" x="1394.01" y="385.4583"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="166.0996"
+                  x="1404.01" y="408.9934">.NET ILogger / OTel SDK
+            </text>
+        </g><!--entity export-->
+        <g class="entity" data-qualified-name="Host-owned OpenTelemetry pipeline.export" data-source-line="34"
+           id="ent0019">
+            <rect fill="#F1F1F1" height="52.9766" rx="4" ry="4" style="stroke:#181818;stroke-width:0.5;"
+                  width="224.9619" x="1467.57" y="492.6683"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="204.9619"
+                  x="1477.57" y="516.2034">SDK processors and exporters
+            </text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="197.8799"
+                  x="1477.57" y="532.6917">batching / transport / retries
+            </text>
+        </g><!--entity app-->
+        <g class="entity" data-qualified-name="app" data-source-line="11" id="ent0001">
+            <ellipse cx="372.0506" cy="51.4883" fill="#F1F1F1" rx="8" ry="8" style="stroke:#181818;stroke-width:0.5;"/>
+            <path d="M372.0506,59.4883 L372.0506,86.4883 M359.0506,67.4883 L385.0506,67.4883 M372.0506,86.4883 L359.0506,101.4883 M372.0506,86.4883 L385.0506,101.4883"
+                  fill="none" style="stroke:#181818;stroke-width:0.5;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="113.6611"
+                  x="315.22" y="116.5234">Application code
+            </text>
+        </g><!--entity host-->
+        <g class="entity" data-qualified-name="host" data-source-line="12" id="ent0002">
+            <rect fill="#FFF1D6" height="52.9766" rx="4" ry="4" style="stroke:#181818;stroke-width:0.5;" width="256.79"
+                  x="1669.66" y="217.4783"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="126.793"
+                  x="1679.66" y="241.0134">Host configuration
+            </text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="236.79"
+                  x="1679.66" y="257.5017">Resource, exporters and shutdown
+            </text>
+        </g><!--entity backend-->
+        <g class="entity" data-qualified-name="backend" data-source-line="37" id="ent0020">
+            <path d="M1474.2875,635.514 C1476.568,628.0621 1482.811,627.5791 1487.5518,632.9737 C1492.8174,626.2841 1499.9919,626.2347 1504.3381,634.0384 C1507.4786,625.2352 1513.2278,625.3733 1519.3053,630.99 C1525.1063,622.9532 1531.3768,623.5641 1535.4431,632.6271 C1539.1368,625.8688 1545.8983,623.864 1550.3563,631.8544 C1553.3573,624.46 1560.1219,623.7037 1564.7152,630.2096 C1569.1015,622.9772 1576.8614,622.4237 1581.7246,629.6485 C1586.5651,623.3331 1592.9238,623.4283 1596.7541,630.7609 C1601.7608,622.3706 1607.7691,623.8421 1612.6237,630.917 C1617.196,624.0355 1623.6852,624.2216 1626.9209,632.2027 C1632.6872,622.9824 1638.2142,623.0667 1644.1209,632.0702 C1648.1113,624.422 1655.7833,623.7554 1660.0634,631.7754 C1664.4937,625.5558 1671.407,625.7339 1674.5956,633.1034 C1679.4085,626.5368 1685.2277,625.8257 1689.3091,633.8414 C1698.3127,635.8439 1698.7982,642.6286 1693.5978,648.7242 C1700.1255,654.9755 1700.4717,660.4503 1691.3444,664.4596 C1687.184,671.2018 1680.084,673.3781 1675.2737,665.1577 C1670.2621,672.7193 1664.5488,674.9352 1657.9237,666.9595 C1653.3137,674.2482 1648.1255,673.3103 1643.5116,666.9636 C1640.2939,674.7293 1632.4213,675.1618 1627.4849,668.9317 C1623.2277,674.8107 1618.2593,675.619 1613.7308,669.236 C1608.7672,679.1345 1602.8944,678.9406 1596.4516,670.6406 C1593.4131,677.3425 1587.081,678.2128 1582.8353,671.9041 C1576.9094,679.0236 1570.4207,678.2167 1566.6226,669.6981 C1562.3472,678.0109 1554.8376,675.6843 1550.952,669.2829 C1545.6953,676.9275 1539.2758,674.6347 1535.6843,667.5563 C1530.2433,673.5462 1524.1857,674.6661 1520.3075,665.925 C1514.226,674.5452 1508.7085,672.9575 1502.8604,665.6691 C1499.2126,671.6926 1492.4386,672.3865 1488.2878,666.2731 C1483.9776,672.3511 1476.9233,673.6629 1473.4961,665.3646 C1462.2779,665.1334 1459.6827,659.0276 1464.3886,649.598 C1461.3212,641.3781 1464.0334,634.3709 1474.2875,635.514"
+                  fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="202.7744"
+                  x="1478.67" y="653.1734">Collector / telemetry backend
+            </text>
+        </g>
+        <g class="entity" data-qualified-name="GMN32" data-source-line="52" id="ent0033">
+            <path d="M6,379.7283 L6,427.6599 A4,4 0 0 0 10,431.6599 L258.1108,431.6599 A4,4 0 0 0 262.1108,427.6599 L262.1108,385.7283 L252.1108,375.7283 L179.11,375.7283 L333.02,270.8383 L171.11,375.7283 L10,375.7283 A4,4 0 0 0 6,379.7283"
+                  fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/>
+            <path d="M252.1108,375.7283 L252.1108,383.7283 A2,2 0 0 0 254.1108,385.7283 L262.1108,385.7283 L252.1108,375.7283"
+                  fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="213.3193"
+                  x="12" y="393.2966">Atomic previous/current updates.
+            </text>
+            <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="229.8105"
+                  x="12" y="408.6072">Ordinary sink failures are contained.
+            </text>
+            <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="235.1108"
+                  x="12" y="423.9177">No queues or worker threads in core.
+            </text>
+        </g><!--link core to port-->
+        <g class="link" data-entity-1="ent0004" data-entity-2="ent0005" data-link-type="dependency"
+           data-source-line="19" id="lnk8">
+            <path d="M375.16,270.7283 C378.97,290.9883 387.43,318.3883 406.06,334.4583 C453.72,375.5483 657.1924,396.9453 703.8124,401.3753"
+                  fill="none" id="core-to-port" style="stroke:#425466;stroke-width:1;"/>
+            <polygon fill="#425466"
+                     points="708.79,401.8483,700.2087,397.0148,703.8124,401.3753,699.452,404.979,708.79,401.8483"
+                     style="stroke:#425466;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="159.2056"
+                  x="407.06" y="323.5266">immutable LifecycleEvent
+            </text>
+        </g><!--link composite to port-->
+        <g class="link" data-entity-1="ent0006" data-entity-2="ent0005" data-link-type="extension" data-source-line="20"
+           id="lnk9">
+            <path d="M587.5,270.9083 C601.71,279.7883 618.53,288.8883 635.06,294.4583 C649.48,299.3083 692.13,291.8683 703.06,302.4583 C716.13,315.1283 717.7202,354.8489 717.9002,376.4789"
+                  fill="none" id="composite-to-port" style="stroke:#425466;stroke-width:1;stroke-dasharray:7,7;"/>
+            <polygon fill="none" points="718.05,394.4783,723.9,376.429,711.9004,376.5288,718.05,394.4783"
+                     style="stroke:#425466;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/>
+        </g><!--link composite to port-->
+        <g class="link" data-entity-1="ent0006" data-entity-2="ent0005" data-link-type="dependency"
+           data-source-line="22" id="lnk11">
+            <path d="M560.08,270.9283 C567.81,290.2483 580.49,316.2883 598.06,334.4583 C631.71,369.2583 682.2682,389.9274 704.0782,397.8174"
+                  fill="none" id="composite-to-port-1" style="stroke:#425466;stroke-width:1;"/>
+            <polygon fill="#425466"
+                     points="708.78,399.5183,701.6775,392.6952,704.0782,397.8174,698.956,400.2181,708.78,399.5183"
+                     style="stroke:#425466;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="95.7798"
+                  x="599.06" y="323.5266">calls each child
+            </text>
+        </g><!--link memory to port-->
+        <g class="link" data-entity-1="ent0007" data-entity-2="ent0005" data-link-type="extension" data-source-line="21"
+           id="lnk10">
+            <path d="M726.43,270.6583 C724.12,306.9783 721.1775,353.4743 719.7275,376.3743" fill="none"
+                  id="memory-to-port" style="stroke:#425466;stroke-width:1;stroke-dasharray:7,7;"/>
+            <polygon fill="none" points="718.59,394.3383,725.7155,376.7534,713.7395,375.9951,718.59,394.3383"
+                     style="stroke:#425466;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/>
+        </g><!--link app to core-->
+        <g class="link" data-entity-1="ent0001" data-entity-2="ent0004" data-link-type="dependency"
+           data-source-line="39" id="lnk21">
+            <path d="M372.06,119.9183 C372.06,149.7983 372.06,185.7583 372.06,212.0483" fill="none" id="app-to-core"
+                  style="stroke:#425466;stroke-width:1;"/>
+            <polygon fill="#425466"
+                     points="372.06,217.0483,376.06,208.0483,372.06,212.0483,368.06,208.0483,372.06,217.0483"
+                     style="stroke:#425466;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="188.3921"
+                  x="373.06" y="163.0466">phase / milestone / condition
+            </text>
+        </g><!--link javaAdapter to port-->
+        <g class="link" data-entity-1="ent0013" data-entity-2="ent0005" data-link-type="extension" data-source-line="40"
+           id="lnk22">
+            <path d="M1156.9,270.8283 C1135.94,279.8683 1111.33,289.0983 1088.06,294.4583 C1035.96,306.4283 1020.17,290.5783 968.06,302.4583 C869.57,324.8883 775.2159,372.4209 743.1659,389.3509"
+                  fill="none" id="javaAdapter-to-port" style="stroke:#425466;stroke-width:1;stroke-dasharray:7,7;"/>
+            <polygon fill="none" points="727.25,397.7583,745.9684,394.6562,740.3634,384.0456,727.25,397.7583"
+                     style="stroke:#425466;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/>
+        </g><!--link netAdapter to port-->
+        <g class="link" data-entity-1="ent0014" data-entity-2="ent0005" data-link-type="extension" data-source-line="41"
+           id="lnk23">
+            <path d="M910.76,270.9383 C892.4,280.2783 872.02,291.2783 854.06,302.4583 C804,333.5983 762.6603,366.2534 741.2103,383.7434"
+                  fill="none" id="netAdapter-to-port" style="stroke:#425466;stroke-width:1;stroke-dasharray:7,7;"/>
+            <polygon fill="none" points="727.26,395.1183,745.002,388.3935,737.4187,379.0933,727.26,395.1183"
+                     style="stroke:#425466;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/>
+        </g><!--link javaAdapter to javaSdk-->
+        <g class="link" data-entity-1="ent0013" data-entity-2="ent0017" data-link-type="dependency"
+           data-source-line="42" id="lnk24">
+            <path d="M1262.98,270.8983 C1284.24,280.0783 1309.31,289.3783 1333.06,294.4583 C1355.46,299.2483 1518.07,293.2783 1539.06,302.4583 C1557.48,310.5083 1553.77,324.1683 1571.06,334.4583 C1581.81,340.8483 1586.69,337.2183 1598.06,342.4583 C1623.39,354.1183 1645.8146,368.9598 1664.0146,382.1798"
+                  fill="none" id="javaAdapter-to-javaSdk" style="stroke:#425466;stroke-width:1;"/>
+            <polygon fill="#425466"
+                     points="1668.06,385.1183,1663.129,376.5927,1664.0146,382.1798,1658.4275,383.0653,1668.06,385.1183"
+                     style="stroke:#425466;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="124.5537"
+                  x="1572.06" y="323.5266">named, typed event
+            </text>
+        </g><!--link netAdapter to netSdk-->
+        <g class="link" data-entity-1="ent0014" data-entity-2="ent0018" data-link-type="dependency"
+           data-source-line="43" id="lnk25">
+            <path d="M1026.09,270.9383 C1045.45,278.8483 1067.03,287.3283 1087.06,294.4583 C1144.01,314.7183 1157.54,323.8783 1217.06,334.4583 C1282.79,346.1383 1302.53,325.3383 1367.06,342.4583 C1401.08,351.4783 1432.4519,368.2138 1455.9519,382.5538"
+                  fill="none" id="netAdapter-to-netSdk" style="stroke:#425466;stroke-width:1;"/>
+            <polygon fill="#425466"
+                     points="1460.22,385.1583,1454.621,377.0558,1455.9519,382.5538,1450.4538,383.8847,1460.22,385.1583"
+                     style="stroke:#425466;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="165.6738"
+                  x="1224.0871" y="316.0266">EventId.Name + attributes
+            </text>
+            <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="177.728"
+                  x="1218.06" y="331.3372">+ private timestamp marker
+            </text>
+        </g><!--link netSdk to timestamp-->
+        <g class="link" data-entity-1="ent0018" data-entity-2="ent0015" data-link-type="dependency"
+           data-source-line="44" id="lnk26">
+            <path d="M1456.01,385.2183 C1438.39,373.4083 1417.93,356.0383 1408.06,334.4583 C1402.14,321.5183 1403.07,315.7783 1408.06,302.4583 C1412.41,290.8083 1416.9436,283.6552 1425.1936,274.5952"
+                  fill="none" id="netSdk-to-timestamp" style="stroke:#425466;stroke-width:1;"/>
+            <polygon fill="#425466"
+                     points="1428.56,270.8983,1419.5429,274.8596,1425.1936,274.5952,1425.458,280.2459,1428.56,270.8983"
+                     style="stroke:#425466;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="125.8423"
+                  x="1409.06" y="323.5266">synchronous OnEnd
+            </text>
+        </g><!--link timestamp to export-->
+        <g class="link" data-entity-1="ent0015" data-entity-2="ent0019" data-link-type="dependency"
+           data-source-line="45" id="lnk27">
+            <path d="M1393.02,270.8683 C1334.25,294.9283 1255.66,329.0083 1247.06,342.4583 C1224.49,377.7383 1221.19,403.7483 1247.06,436.6983 C1274.29,471.3983 1376.7102,492.5213 1462.2602,504.7413"
+                  fill="none" id="timestamp-to-export" style="stroke:#425466;stroke-width:1;"/>
+            <polygon fill="#425466"
+                     points="1467.21,505.4483,1458.8661,500.2158,1462.2602,504.7413,1457.7348,508.1354,1467.21,505.4483"
+                     style="stroke:#425466;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="127.2388"
+                  x="1248.06" y="401.2666">restored Timestamp
+            </text>
+            <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="103.7461"
+                  x="1259.8063" y="416.5772">marker removed
+            </text>
+        </g><!--link javaSdk to export-->
+        <g class="link" data-entity-1="ent0017" data-entity-2="ent0019" data-link-type="dependency"
+           data-source-line="46" id="lnk28">
+            <path d="M1673.71,422.4283 C1655.3,441.2483 1629.5169,467.5945 1608.5969,488.9745" fill="none"
+                  id="javaSdk-to-export" style="stroke:#425466;stroke-width:1;"/>
+            <polygon fill="#425466"
+                     points="1605.1,492.5483,1614.2534,488.913,1608.5969,488.9745,1608.5354,483.318,1605.1,492.5483"
+                     style="stroke:#425466;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/>
+        </g><!--link export to backend-->
+        <g class="link" data-entity-1="ent0019" data-entity-2="ent0020" data-link-type="dependency"
+           data-source-line="47" id="lnk29">
+            <path d="M1580.06,546.1083 C1580.06,569.1283 1580.06,597.4283 1580.06,619.3583" fill="none"
+                  id="export-to-backend" style="stroke:#425466;stroke-width:1;"/>
+            <polygon fill="#425466"
+                     points="1580.06,624.3583,1584.06,615.3583,1580.06,619.3583,1576.06,615.3583,1580.06,624.3583"
+                     style="stroke:#425466;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="60.125"
+                  x="1581.06" y="591.2066">e.g. OTLP
+            </text>
+        </g><!--link host to javaSdk-->
+        <g class="link" data-entity-1="ent0002" data-entity-2="ent0017" data-link-type="dependency"
+           data-source-line="48" id="lnk30">
+            <path d="M1811.06,270.9183 C1818.52,289.7383 1824.37,315.1583 1813.06,334.4583 C1799.06,358.3183 1777.9232,372.4597 1753.6832,383.0297"
+                  fill="none" id="host-to-javaSdk" style="stroke:#425466;stroke-width:1;stroke-dasharray:7,7;"/>
+            <polygon fill="#425466"
+                     points="1749.1,385.0283,1758.9486,385.0975,1753.6832,383.0297,1755.751,377.7643,1749.1,385.0283"
+                     style="stroke:#425466;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="66.6123"
+                  x="1820.39" y="323.5266">configures
+            </text>
+        </g><!--link host to netSdk-->
+        <g class="link" data-entity-1="ent0002" data-entity-2="ent0018" data-link-type="dependency"
+           data-source-line="49" id="lnk31">
+            <path d="M1770.26,270.8383 C1759.79,280.6683 1747.81,292.0083 1737.06,302.4583 C1722.62,316.4683 1723.34,326.0783 1705.06,334.4583 C1661.3,354.5083 1643.21,328.8083 1597.06,342.4583 C1565.74,351.7183 1537.5168,368.0447 1516.0768,382.2647"
+                  fill="none" id="host-to-netSdk" style="stroke:#425466;stroke-width:1;stroke-dasharray:7,7;"/>
+            <polygon fill="#425466"
+                     points="1511.91,385.0283,1521.6212,383.3872,1516.0768,382.2647,1517.1994,376.7203,1511.91,385.0283"
+                     style="stroke:#425466;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="66.6123"
+                  x="1738.06" y="323.5266">configures
+            </text>
+        </g>
+        <g class="legend" data-source-line="57">
+            <rect fill="none" height="59.4648" rx="4" ry="4" style="stroke:#000000;stroke-width:1;" width="574.4639"
+                  x="679.4931" y="700.1345"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="558.6943"
+                  x="684.4931" y="718.6696">Solid arrows: calls / event flow. Dashed triangle arrows: implements the
+                sink port.
+            </text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="557.0947"
+                  x="684.4931" y="735.1579">Java and .NET paths are alternatives; each host uses its runtime's
+                implementation.
+            </text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="564.4639"
+                  x="684.4931" y="751.6462">The timestamp processor is library code registered in the host's .NET SDK
+                pipeline.
+            </text>
+        </g>
+    </g>
+</svg>

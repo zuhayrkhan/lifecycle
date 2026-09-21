@@ -1,0 +1,52 @@
+@startuml
+title .NET — stable ILogger integration and original timestamp preservation
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam defaultFontName SansSerif
+skinparam ArrowColor #425466
+skinparam sequenceMessageAlign center
+hide footbox
+autonumber
+
+actor Application as app
+participant DefaultLifecycle as core #EDF5FF
+participant OpenTelemetryLifecycleSink as sink #EAF7EE
+participant "ILogger / OTel bridge" as bridge #FFF1D6
+participant LifecycleLogRecordProcessor as timestamp #EAF7EE
+participant "SDK processors /\nexporter" as exporter #FFF1D6
+
+note over bridge, exporter
+  Host registers AddLifecycleTelemetry() BEFORE exporters.
+  Enable Information-level logging for category Lifecycle.OpenTelemetry.
+end note
+app -> core : Phase(...), Milestone(...) or Condition(...)
+core -> core : Validate and copy inputs\nAtomically update phase/condition, if applicable\nCapture wall time + monotonic elapsed\nCreate immutable LifecycleEvent
+core -> sink : Emit(event)
+sink -> sink : Copy typed attributes\nAdd lifecycle.internal.timestamp_ticks = event.Timestamp.UtcTicks
+sink -> bridge : Log(Information, EventId(0, event.Name), attributes, ...)\nBody = event.Name
+break Filtered out by host logging configuration
+  bridge --> sink : No record emitted
+  sink --> core
+  core --> app
+end
+bridge -> bridge : Create LogRecord\nInitial Timestamp and ObservedTimestamp = SDK wall time\nCapture active Activity context
+bridge -> timestamp : OnEnd(record), synchronously
+timestamp -> timestamp : Match library category and timestamp marker\nSet Timestamp from original event ticks\nRemove private marker from attributes
+timestamp --> bridge
+bridge -> exporter : Continue to next configured processor\nTimestamp restored; ObservedTimestamp unchanged
+note over bridge, exporter
+  Host Resource supplies identity.
+  OTLP exporter maps EventId.Name to native event_name.
+  Batching, if configured, starts after timestamp restoration.
+end note
+exporter --> bridge
+bridge --> sink
+sink --> core
+core --> app : Return
+
+note over app, sink
+  Invalid inputs fail before state changes. Ordinary sink failures are contained;
+  previous/current state is retained. Fatal runtime failures are not deliberately caught.
+  No experimental EmitLog API, reflection, or library-owned background thread is used.
+end note
+@enduml

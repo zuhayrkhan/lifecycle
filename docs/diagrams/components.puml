@@ -1,0 +1,63 @@
+@startuml
+title Lifecycle telemetry — components and ownership
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam componentStyle rectangle
+skinparam defaultFontName SansSerif
+skinparam ArrowColor #425466
+skinparam packageStyle rectangle
+skinparam roundcorner 8
+top to bottom direction
+
+actor "Application code" as app
+component "Host configuration\nResource, exporters and shutdown" as host #FFF1D6
+
+package "Core library — no OTel dependencies" #EDF5FF {
+  component "Lifecycle / ILifecycle\nDefaultLifecycle" as core
+  interface "LifecycleEventSink /\nILifecycleEventSink" as port
+  component "Composite sink\noptional fan-out" as composite
+  component "In-memory sink\ntests and examples" as memory
+  core --> port : immutable LifecycleEvent
+  composite ..|> port
+  memory ..|> port
+  composite --> port : calls each child
+}
+
+package "Language-specific adapters" #EAF7EE {
+  component "Java\nOpenTelemetryLifecycleSink" as javaAdapter
+  component ".NET\nOpenTelemetryLifecycleSink" as netAdapter
+  component ".NET\nLifecycleLogRecordProcessor" as timestamp
+}
+
+package "Host-owned OpenTelemetry pipeline" #FFF1D6 {
+  component "Java Logs API / SDK" as javaSdk
+  component ".NET ILogger / OTel SDK" as netSdk
+  component "SDK processors and exporters\nbatching / transport / retries" as export
+}
+
+cloud "Collector / telemetry backend" as backend
+
+app --> core : phase / milestone / condition
+javaAdapter ..|> port
+netAdapter ..|> port
+javaAdapter --> javaSdk : named, typed event
+netAdapter --> netSdk : EventId.Name + attributes\n+ private timestamp marker
+netSdk --> timestamp : synchronous OnEnd
+timestamp --> export : restored Timestamp\nmarker removed
+javaSdk --> export
+export --> backend : e.g. OTLP
+host ..> javaSdk : configures
+host ..> netSdk : configures
+
+note bottom of core
+  Atomic previous/current updates.
+  Ordinary sink failures are contained.
+  No queues or worker threads in core.
+end note
+
+legend bottom
+  Solid arrows: calls / event flow. Dashed triangle arrows: implements the sink port.
+  Java and .NET paths are alternatives; each host uses its runtime's implementation.
+  The timestamp processor is library code registered in the host's .NET SDK pipeline.
+endlegend
+@enduml

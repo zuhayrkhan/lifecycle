@@ -4,6 +4,9 @@ Small Java 17+ and .NET 8 libraries for reporting application **phases**, **mile
 and independent **conditions**. The core libraries have no OpenTelemetry dependencies.
 Adapters emit structured OTel log events directly in-process.
 
+See the [PlantUML component and sequence diagrams](docs/diagrams/README.md) for the
+architecture, event emission paths and shutdown flow.
+
 The library observes what the application reports. It does not orchestrate startup,
 probe dependencies, aggregate health, or enforce state transitions.
 

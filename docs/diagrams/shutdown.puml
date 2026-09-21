@@ -1,0 +1,57 @@
+@startuml
+title Shutdown — host-controlled flush before SDK disposal
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam defaultFontName SansSerif
+skinparam ArrowColor #425466
+skinparam sequenceMessageAlign center
+hide footbox
+autonumber
+
+actor "Application host" as host
+participant "Lifecycle + sink" as lifecycle #EDF5FF
+participant "Host-owned OTel SDK\nand processors" as sdk #FFF1D6
+participant "Exporter / transport" as exporter #FFF1D6
+participant "Collector / backend" as backend
+
+host -> lifecycle : phase(STOPPING) / Phase(Stopping)
+lifecycle -> sdk : Emit application.lifecycle.phase_changed
+sdk --> lifecycle
+lifecycle --> host
+host -> host : Complete application shutdown work\nKeep telemetry dependencies alive
+host -> lifecycle : phase(STOPPED) / Phase(Stopped)
+lifecycle -> sdk : Emit final phase event
+sdk --> lifecycle
+lifecycle --> host
+note over host, lifecycle
+  STOPPED is a declaration before process exit,
+  not proof that the process has terminated.
+end note
+
+host -> sdk : Request bounded force flush
+note over host, sdk
+  Java: forceFlush().join(10, SECONDS).isSuccess()
+  .NET: LoggerProvider.ForceFlush(10_000)
+end note
+sdk -> exporter : Flush pending batch, if configured
+exporter -> backend : Attempt export
+backend --> exporter : Response, failure or timeout
+exporter --> sdk : Completion / failure
+sdk --> host : SDK flush result or wait timeout
+alt Unsuccessful flush or timeout
+  host -> host : Apply host failure-reporting policy
+else Flush completed
+  note over host, backend : Flush completion is not a durable-delivery guarantee.
+end
+host -> sdk : Close / dispose provider or host services
+sdk -> exporter : Shutdown / dispose transport
+exporter --> sdk
+sdk --> host
+host -> host : Process exits
+
+note over host, exporter
+  Flush BEFORE disposing .NET services: the SDK may initialize its HTTP client lazily.
+  The lifecycle library never owns SDK shutdown and adds no retries or delivery guarantees.
+  Abrupt process termination may skip this entire sequence.
+end note
+@enduml
