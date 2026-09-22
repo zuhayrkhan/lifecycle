@@ -7,6 +7,9 @@ Adapters emit structured OTel log events directly in-process.
 See the [PlantUML component and sequence diagrams](docs/diagrams/README.md) for the
 architecture, event emission paths and shutdown flow.
 
+For agent-assisted adoption in another application, use the portable
+[Lifecycle integration skill for Codex and Claude Code](docs/skills/README.md).
+
 The library observes what the application reports. It does not orchestrate startup,
 probe dependencies, aggregate health, or enforce state transitions.
 
